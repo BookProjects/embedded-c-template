@@ -25,10 +25,6 @@ OBJ=$(patsubst %,$(ODIR)/%,$(_OBJ))
 _DEPS= main.h
 DEPS=$(patsubst %,$(IDIR)/%,$(_DEPS)) $(GEN_DEPS)
 
-#Flag Handling
-ifdef DEBUG
-CPPFLAGS := $(CPPFLAGS) -g
-endif
 ifdef VERBOSE
         Q =
         E = @true 
@@ -50,7 +46,7 @@ help:
 $(ODIR)/%.o: $(LDIR)/%.cpp $(DEPS)
 	$(E)C-compiling $<
 	$(Q)if [ ! -d `dirname $@` ]; then mkdir -p `dirname $@`; fi
-	$(Q)$(CC) -o $@ -c $< $(CPPFLAGS) $(INCLUDE_PATHS)
+	$(Q)$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDE_PATHS)
 
 $(BINFILE_DBG):	$(OBJ) $(DEPS)
 	$(E)Linking $@
