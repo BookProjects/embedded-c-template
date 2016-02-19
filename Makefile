@@ -1,12 +1,18 @@
 #Compiler Directives
-PROG=bin # Name of generated code
-CC=gcc # TODO: change to arm-elf-gcc
-CFLAGS= -g -c -Wall
+# Name of generated code
+PROG=bin
+ifndef CC_PATH
+$(error "CC_PATH not set, can't find cross compiler")
+endif
+# Prefix to compiler tools
+CC_TYPE=arm-none-eabi
+CC=$(CC_PATH)/$(CC_TYPE)-gcc
+CFLAGS=-g -c -Wall
 
 MAPFILE=$(PROG).map
-LD=gcc # TODO: change to arm-elf-ld
-LDFLAGS=-g # -Wl -Map $(MAPFILE)
-STRIP=strip # TODO: change to arm-elf-strip
+LD=$(CC)  # Use compiler to link
+LDFLAGS=-g -Wl,-Map=$(MAPFILE) --specs=nosys.specs
+STRIP=$(CC_PATH)/$(CC_TYPE)-strip
 
 LIBS=
 #Directories
