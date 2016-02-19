@@ -19,7 +19,7 @@ for, and how to install them.
    a very helpful [article about setting it up](https://liviube.wordpress.com/2013/04/22/blink-for-stm32f4-discovery-board-on-linux-with-makefile/)
    that showed me how to install it and also informed me of
    [stlink](https://github.com/texane/stlink) which I discuss in the [Flashing &
-   Debugging Tools](###Flashing & Debugging Tools) section.
+   Debugging Tools](#flashing--debugging-tools) section.
 
 ### Flashing & Debugging Tools
 * [stlink](https://github.com/texane/stlink) contains st-util to use gdb on the
