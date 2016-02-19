@@ -1,0 +1,6 @@
+compiler: gcc
+before_install:
+    - sudo apt-get install splint
+script:
+    - make lint
+    - make test
